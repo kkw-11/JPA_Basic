@@ -14,11 +14,15 @@ public class JpaMain {
         tx.begin();
         //code
         try{
-            List<Member> result = em.createQuery("select m from Member as m", Member.class).getResultList();
+            //준영속
+            Member member = new Member();
+            member.setId(1L);
+            member.setName("Hello");
 
-            for (Member member : result) {
-                System.out.println("member.name: " + member.getName());
-            }
+            //영속
+            System.out.println("=== BEFORE ===");
+            em.persist(member);
+            System.out.println("=== AFTER ===");
 
             tx.commit();
 
