@@ -14,16 +14,13 @@ public class JpaMain {
         tx.begin();
         //code
         try{
-            //준영속
-            Member member = new Member();
-            member.setId(1L);
-            member.setName("Hello");
-
-            //영속
-            System.out.println("=== BEFORE ===");
+            //영속상태, 1차 캐시에 저장됨
+            Member member = new Member(2000L, "member200");
             em.persist(member);
-            System.out.println("=== AFTER ===");
 
+            em.flush();
+
+            System.out.println("==================");
             tx.commit();
 
         } catch (Exception e){
