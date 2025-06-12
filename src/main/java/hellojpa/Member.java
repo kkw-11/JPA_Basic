@@ -9,6 +9,11 @@ public class Member {
     private Long id;
     private String name;
 
+    public Member() {
+    }
+
+    public Member(Long id, String name) {}
+
     public Long getId() {
         return id;
     }
