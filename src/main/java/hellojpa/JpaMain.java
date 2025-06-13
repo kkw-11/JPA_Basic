@@ -14,12 +14,12 @@ public class JpaMain {
         tx.begin();
         //code
         try{
-            //영속상태, 1차 캐시에 저장됨
-            Member member = new Member(2000L, "member200");
-            em.persist(member);
+            //영속
+            Member member = em.find(Member.class, 101L);
+            member.setName("ZZZZZ");
 
-            em.flush();
-
+            //준영속
+            em.detach(member);
             System.out.println("==================");
             tx.commit();
 
